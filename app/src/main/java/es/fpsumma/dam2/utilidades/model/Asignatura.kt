@@ -16,5 +16,5 @@ data class Asignatura(
     val trimestre: String,
 
     @ColumnInfo(name = "nota")
-    val nota: Int
+    val nota: Int?
 )

@@ -26,8 +26,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyApp() {
     val navController = rememberNavController()
-    val tareasViewModel: TareasViewModel =viewModel()
     UtilidadesTheme {
-        AppNavHost(navController = navController, tareasViewModel)
+        AppNavHost(navController = navController)
     }
 }

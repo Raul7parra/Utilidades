@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.room.Room
 import es.fpsumma.dam2.utilidades.data.local.AppDatabase
+import es.fpsumma.dam2.utilidades.model.Asignatura
 import es.fpsumma.dam2.utilidades.model.Tarea
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
