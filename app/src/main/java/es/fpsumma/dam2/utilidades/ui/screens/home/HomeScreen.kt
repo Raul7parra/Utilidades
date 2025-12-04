@@ -32,10 +32,10 @@ fun HomeScreen(navController: NavController) {
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Button(
-                onClick = { navController.navigate(Routes.LISTADO_TAREAS) },
+                onClick = { navController.navigate(Routes.LISTADO_ASIGNATURAS) },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("Listado de tareas")
+                Text("Listado de asignaturas")
             }
 
         }
