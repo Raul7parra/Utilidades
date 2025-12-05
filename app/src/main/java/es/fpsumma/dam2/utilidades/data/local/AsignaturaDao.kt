@@ -31,6 +31,4 @@ interface AsignaturaDao {
     //Se mostrará todas las asignaturas
     @Query ("SELECT * from asignaturas")
     fun getAllAsignaturas(): Flow<List<Asignatura>>
-
-
 }

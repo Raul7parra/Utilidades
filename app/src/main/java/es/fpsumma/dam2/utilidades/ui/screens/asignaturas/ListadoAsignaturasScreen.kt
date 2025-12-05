@@ -25,13 +25,13 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import es.fpsumma.dam2.utilidades.ui.viewmodel.AsignaturasViewModel
 
@@ -48,7 +48,7 @@ fun ListadoAsignaturasScreen(
 
     var asignatura by rememberSaveable { mutableStateOf("") }
     var trimestre by rememberSaveable { mutableStateOf("") }
-    var nota by rememberSaveable { mutableStateOf("") }
+    var nota by rememberSaveable { mutableDoubleStateOf(0.0) }
 
     Scaffold(
         topBar = {
@@ -102,8 +102,8 @@ fun ListadoAsignaturasScreen(
             Text("Nota")
 
             OutlinedTextField(
-                value = nota,
-                onValueChange = {nota = it},
+                value = nota.toString(), //Ponemos eso porque queremos pasar el Double a String
+                onValueChange = {nota = it.toDouble()}, //Ponemos eso porque queremos pasar el String a Double
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -111,9 +111,7 @@ fun ListadoAsignaturasScreen(
 
             Button(
                 onClick = {
-                    //Creamos esta variable porque la nota esta en Int y la tenemos que pasar a String
-                    val notaInt = nota.toInt()
-                    vm.addAsignatura(asignatura = asignatura, trimestre = trimestre, nota = notaInt)}
+                    vm.addAsignatura(asignatura = asignatura, trimestre = trimestre, nota = nota)}
             ) {
                 Text("Guardar")
             }
@@ -133,7 +131,6 @@ fun ListadoAsignaturasScreen(
                     }
                 }
             }
-
         }
     }
 }

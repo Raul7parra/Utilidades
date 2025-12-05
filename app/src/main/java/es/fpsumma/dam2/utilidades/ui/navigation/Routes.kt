@@ -5,5 +5,4 @@ object Routes {
     const val LISTADO_TAREAS = "tareas"
 
     const val LISTADO_ASIGNATURAS = "asignaturas"
-
 }

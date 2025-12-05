@@ -20,6 +20,7 @@ class AsignaturasViewModel(app: Application) : AndroidViewModel(app) {
     //Se crea una variable que la igualamos al dao que nos queramos referir en este caso al de asignaturaDao
     private val dao = db.asignaturaDao()
 
+    //Lo que hace es que cuando cambia la Base de Datos, se actualiza
     val asignaturas: StateFlow<List<Asignatura>> =
         dao.getAllAsignaturas().stateIn(
             viewModelScope,
@@ -28,7 +29,7 @@ class AsignaturasViewModel(app: Application) : AndroidViewModel(app) {
         )
 
     // Función que crea la asignatura
-    fun addAsignatura(asignatura: String, trimestre: String, nota: Int) = viewModelScope.launch {
+    fun addAsignatura(asignatura: String, trimestre: String, nota: Double) = viewModelScope.launch {
         dao.insert(Asignatura(asignatura = asignatura, trimestre = trimestre, nota = nota))
     }
 
