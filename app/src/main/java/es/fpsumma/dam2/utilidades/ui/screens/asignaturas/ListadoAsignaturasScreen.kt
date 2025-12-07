@@ -44,7 +44,7 @@ fun ListadoAsignaturasScreen(
     modifier: Modifier= Modifier)
 {
 
-    val asignaturasList by vm.asignaturas.collectAsState()
+    val asignaturasList by vm.asignaturas.collectAsState() //Sirve para listar las asignaturas guardadas en el ViewModel y se actualiza automáticamente
 
     var asignatura by rememberSaveable { mutableStateOf("") }
     var trimestre by rememberSaveable { mutableStateOf("") }
@@ -123,10 +123,14 @@ fun ListadoAsignaturasScreen(
                             Text(asignatura.asignatura)
                             Text("Trimestre: "+ asignatura.trimestre)
                             Text("Nota: "+ asignatura.nota)
-                            Icon(
-                                imageVector = Icons.Filled.Delete,
-                                contentDescription = "Eliminar asignatura"
-                            )
+                            IconButton(
+                                onClick = {vm.deleteAsignatura(asignatura)}
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Filled.Delete,
+                                    contentDescription = "Eliminar asignatura"
+                                )
+                            }
                         }
                     }
                 }
