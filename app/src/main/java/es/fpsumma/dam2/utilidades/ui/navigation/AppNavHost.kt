@@ -14,15 +14,10 @@ import es.fpsumma.dam2.utilidades.ui.viewmodel.TareasViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun AppNavHost(navController: NavHostController) {
+fun AppNavHost(navController: NavHostController, tareasViewModel: TareasViewModel, asignaturasViewModel: AsignaturasViewModel) {
     NavHost(navController = navController, startDestination = Routes.LISTADO_ASIGNATURAS) {
         composable(Routes.HOME) { HomeScreen(navController)}
-        composable(Routes.LISTADO_TAREAS) {
-            val tareasVm: TareasViewModel = viewModel()
-            ListadoTareasScreen(navController, tareasVm) }
-        composable(Routes.LISTADO_ASIGNATURAS) {
-            val asignaturasVm: AsignaturasViewModel = viewModel()
-            ListadoAsignaturasScreen(navController, vm = asignaturasVm)
-        }
+        composable(Routes.LISTADO_TAREAS) { ListadoTareasScreen(navController, vm = tareasViewModel) }
+        composable(Routes.LISTADO_ASIGNATURAS) { ListadoAsignaturasScreen(navController, vm = asignaturasViewModel) }
     }
 }
